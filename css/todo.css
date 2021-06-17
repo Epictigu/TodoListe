@@ -45,17 +45,17 @@
     border-color: lightgreen;
 }
 
-.eingabeaufforderung #progressDiv {
+.eingabeaufforderung .progressDiv {
     display: flex;
     flex-direction: row;
 }
 
-.eingabeaufforderung #progressDiv #progress {
+.eingabeaufforderung .progressDiv .progress {
     margin-left: 5px;
     border-radius: 4px 0 0 4px;
 }
 
-.eingabeaufforderung #progressDiv #progressSuffix {
+.eingabeaufforderung .progressDiv .progressSuffix {
     padding-top: 2px;
     padding-left: 5px;
     padding-right: 5px;
@@ -67,7 +67,7 @@
     pointer-events: none;
 }
 
-.eingabeaufforderung #submitbutton {
+.eingabeaufforderung .submitbutton {
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
@@ -84,25 +84,11 @@
     box-shadow: 0 2px 0px green;
 }
 
-.eingabeaufforderung #submitbutton:hover {
+.eingabeaufforderung .submitbutton:hover {
     background-color: rgb(77, 184, 77);
 }
 
-.eingabeaufforderung #addheader {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.eingabeaufforderung #addheader button {
-    border: none;
-    background: none;
-    width: 20px;
-    height: 20px;
-    font-size: 20px;
-}
-
-.eingabeaufforderung #exitbutton {
+.eingabeaufforderung .exitbutton {
     position: absolute;
     right: -10px;
     top: -10px;
@@ -118,7 +104,7 @@
     color: white;
 }
 
-.eingabeaufforderung #exitbutton:hover{
+.eingabeaufforderung .exitbutton:hover{
     background: rgb(77, 184, 77);
     cursor: pointer;
 }

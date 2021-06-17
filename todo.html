@@ -12,39 +12,39 @@
 <body onload="addAllTodos()" id="main">
     <section class="eingabeaufforderung" id="addtodo">
         <h2>Neue Aufgabe erstellen</h2>
-        <button id="exitbutton" onclick="openAddTodo()">x</button>
+        <button class="exitbutton" onclick="openAddTodo()">x</button>
         <form id="todoForm" onsubmit="addNewTodo(event)">
             <label for="task">Was ist zu erledigen?</label>
             <input type="text" id="task" name="task" required/><br />
-            <div id="progressDiv">
+            <div class="progressDiv">
                 <label for="progress">Wie viel ist bereits erledigt?</label>
-                <input type="number" id="progress" name="progress" min="0" max="100" value="0" required/><br />
-                <span id="progressSuffix">%</span>
+                <input type="number" id="progress" class="progress" name="progress" min="0" max="100" value="0" required/><br />
+                <span class="progressSuffix">%</span>
             </div>
             <label for="targetDate">Zu erledigen bis?</label>
             <input type="date" id="targetDate" name="targetDate" required/>
             <input type="time" id="targetTime" name="targetTime" required/><br />
 
-            <button type="submit" id="submitbutton">Hinzufügen</button>
+            <button type="submit" class="submitbutton">Hinzufügen</button>
         </form>
     </section>
 
     <section class="eingabeaufforderung" id="edittodo">
         <h2>Aufgabe editieren</h2>
-        <button id="exitbutton" onclick="openEditTodo()">x</button>
+        <button class="exitbutton" onclick="openEditTodo()">x</button>
         <form id="todoForm" onsubmit="editTodo(event)">
             <label for="taskEdit">Was ist zu erledigen?</label>
             <input type="text" id="taskEdit" name="task" required/><br />
-            <div id="progressDiv">
+            <div class="progressDiv">
                 <label for="progress">Wie viel ist bereits erledigt?</label>
-                <input type="number" id="progressEdit" name="progress" min="0" max="100" value="0" required/><br />
-                <span id="progressSuffix">%</span>
+                <input type="number" id="progressEdit" class="progress" name="progress" min="0" max="100" value="0" required/><br />
+                <span class="progressSuffix">%</span>
             </div>
             <label for="targetDate">Zu erledigen bis?</label>
             <input type="date" id="targetDateEdit" name="targetDate" required/>
             <input type="time" id="targetTimeEdit" name="targetTime" required/><br />
 
-            <button type="submit" id="submitbutton">Hinzufügen</button>
+            <button type="submit" class="submitbutton">Absenden</button>
         </form>
     </section>
 

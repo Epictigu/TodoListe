@@ -12,7 +12,7 @@ module.exports = {
     init: () => {
         con.connect(function(err){
             if(err) throw err;
-            console.log("Connected!");
+            console.log("Verbind zur MySQL Datenbank wurde aufgebaut!");
         });
 
         return con;
@@ -20,12 +20,13 @@ module.exports = {
 
     getTodos: (req, res) => {
         var sql = "SELECT * FROM Todo";
+        console.log("Frage Todos ab ...");
         con.query(sql, function(err, results){
             if(err) {
                 console.log("error: " + err);
                 res.status(500).send(err);
             }
-            console.log(results);
+            console.log("SQL-Antwort: %o", results);
             res.send(results);
         });
     },
@@ -33,11 +34,13 @@ module.exports = {
     addTodo: (req, res) => {
         var sql = "INSERT INTO Todo (Title, Due, Status) "
          + "VALUES('" + req.body.Title + "', '" + req.body.Due + "', '" + req.body.Status + "')";
+         console.log("Füge Todo hinzu ...");
         con.query(sql, function(err, results){
             if(err){
                 console.log("error: " + err);
                 res.status(500).send(err);
             }
+            console.log("SQL-Antwort: %o", results);
             res.send(results);
         });
     },
@@ -45,12 +48,13 @@ module.exports = {
     deleteTodo: (req, res) => {
         let id = req.params.id;
         var sql = "DELETE FROM Todo WHERE ID='" + id + "'";
-        console.log(sql);
+        console.log("Lösche Todo ...");
         con.query(sql, function(err, results){
             if(err){
                 console.log("error: " + err);
                 res.status(500).send(err);
             }
+            console.log("SQL-Antwort: %o", results);
             res.send(results);
         });
     },
@@ -64,12 +68,13 @@ module.exports = {
         var sql = "UPDATE Todo SET Title='"
             + req.body.Title + "', Due='" + date[0] + "T" + time[0] + ":" + time[1]
             + "', Status='" + req.body.Status + "' WHERE ID=" + id;
+        console.log("Editiere Todo ...");
         con.query(sql, function(err, results){
             if(err){
                 console.log("error: " + err);
                 res.status(500).send(err);
             }
-            console.log(req.body);
+            console.log("SQL-Antwort: %o", results);
             res.send(results);
         });
     }

@@ -1,5 +1,6 @@
 
 function addAllTodos() {
+    console.log("Versuche Liste aller Todos abzurufen ...");
     fetch("http://epicclan.eu:3000/api/todos", { method: 'get' })
         .then(response => {
             if(response.status == 500) {
@@ -8,8 +9,7 @@ function addAllTodos() {
             return response.json();
         })
         .then(todos => {
-            console.log('Server Response:');
-            console.log(todos);
+            console.log('Server Response: %o', todos);
             todos.forEach(todo => {
                 addTodo(todo);
             });
@@ -22,8 +22,6 @@ function addTodo(todo){
     var div = document.createElement("div");
     div.className = "todo";
     div.id = "todo-" + todo.ID;
-
-    console.log(todo);
 
     div.insertAdjacentHTML("beforeend", '<span class="todotitle">' + todo.Title + '</span>');
     div.insertAdjacentHTML("beforeend", '<span class="tododue">Fällig bis: ' + formatDateAndTime(todo.Due) + '</span>');
@@ -50,6 +48,7 @@ function addTodo(todo){
     }, false);
 
     todoDel.onclick = function (){
+        console.log("Versuche Todo zu löschen ...");
         fetch("http://epicclan.eu:3000/api/todos/" + todo.ID, { method: 'delete' })
             .then(response => {
                 if(response.status == 500){
@@ -88,7 +87,7 @@ function addNewTodo(e){
         Due: dateInput.value + " " + timeInput.value,
         Status: progressInput.value
     }
-    console.log(todo);
+    console.log("Versuche Todo hinzuzufügen ...");
     fetch("http://epicclan.eu:3000/api/todos", { method: 'post', headers: new Headers({'content-type': 'application/json'}), body: JSON.stringify(todo) })
         .then(response => response.json())
         .then(response => {
@@ -115,8 +114,7 @@ function editTodo(e){
     currentEdit.Status = progressInput.value;
     currentEdit.Due = dateInput.value + "T" + timeInput.value;
 
-    console.log(currentEdit);
-
+    console.log("Versuche Todo zu editieren ...");
     fetch("http://epicclan.eu:3000/api/todos/" + currentEdit.ID, { method: 'put', headers: new Headers({'content-type': 'application/json'}), body: JSON.stringify(currentEdit) })
         .then(response => response.json())
         .then(response =>{
