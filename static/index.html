@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="css/todo.css" />
+    <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="todo.js"></script>
+</head>
+
+<body onload="addAllTodos()" id="main">
+    <section class="eingabeaufforderung" id="addtodo">
+        <h2>Neue Aufgabe erstellen</h2>
+        <form id="todoForm" onsubmit="addNewTodo(event)">
+            <label for="task">Beschreibung</label><br />
+            <input type="text" id="task" class="task" name="task" placeholder="Was soll erledigt werden?" required/><br />
+            <div class="progressDateAndTimeInput">
+                <div class="progressDiv">
+                    <label for="progress" class="progressLabel">Fortschritt</label><br />
+
+                    <div class="progressWithSuffix">
+                        <input type="number" id="progress" class="progress" name="progress" min="0" max="100" value="0" required/>
+                        <span class="progressSuffix">%</span>
+                    </div>
+                </div>
+                <div class="dateTimeDiv">
+                    <label for="targetDate" class="dateTimeLabel">Fälligkeitsdatum</label><br />
+
+                    <input type="date" id="targetDate" name="targetDate" required/>
+                    <input type="time" id="targetTime" name="targetTime" required/>
+                </div>
+            </div>
+
+            <div class="buttonDiv">
+                <button class="cancelbutton" onclick="openAddTodo()">Abbrechen</button>
+                <button type="submit" class="submitbutton">Hinzufügen</button>
+            </div>
+        </form>
+    </section>
+
+    <section class="eingabeaufforderung" id="edittodo">
+        <h2>Aufgabe bearbeiten</h2>
+        <form id="todoForm" onsubmit="editTodo(event)">
+            <label for="task">Beschreibung</label><br />
+            <input type="text" id="taskEdit" class="task" name="task" placeholder="Was soll erledigt werden?" required/><br />
+            <div class="progressDateAndTimeInput">
+                <div class="progressDiv">
+                    <label for="progressEdit" class="progressLabel">Fortschritt</label><br />
+
+                    <div class="progressWithSuffix">
+                        <input type="number" id="progressEdit" class="progress" name="progress" min="0" max="100" value="0" required/>
+                        <span class="progressSuffix">%</span>
+                    </div>
+                </div>
+                <div class="dateTimeDiv">
+                    <label for="targetDate" class="dateTimeLabel">Fälligkeitsdatum</label><br />
+
+                    <input type="date" id="targetDateEdit" name="targetDate" required/>
+                    <input type="time" id="targetTimeEdit" name="targetTime" required/>
+                </div>
+            </div>
+
+            <div class="buttonDiv">
+                <button class="cancelbutton" onclick="openEditTodo()">Abbrechen</button>
+                <button type="submit" class="submitbutton">Bearbeiten</button>
+            </div>
+        </form>
+    </section>
+
+    <section id="todomain">
+        <div id="todoheadercon">
+            <section id="todoheader">
+                <h2 class="todoheader">ToDo Liste:</h2>
+                <button class="todoheader" onclick="openAddTodo()">+</button>
+            </section>
+        </div>
+    
+        <section id="todoList"></section>
+    </section>
+</body>
+
+</html>

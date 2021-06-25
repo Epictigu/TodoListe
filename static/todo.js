@@ -1,7 +1,7 @@
 
 function addAllTodos() {
     console.log("Versuche Liste aller Todos abzurufen ...");
-    fetch("http://epicclan.eu:3000/api/todos", { method: 'get' })
+    fetch("/api/todos", { method: 'get' })
         .then(response => {
             if(response.status == 500) {
                 console.log("Fehler 500!");
@@ -49,7 +49,7 @@ function addTodo(todo){
 
     todoDel.onclick = function (){
         console.log("Versuche Todo zu löschen ...");
-        fetch("http://epicclan.eu:3000/api/todos/" + todo.ID, { method: 'delete' })
+        fetch("/api/todos/" + todo.ID, { method: 'delete' })
             .then(response => {
                 if(response.status == 500){
                     console.log("Fehler 500!");
@@ -88,7 +88,7 @@ function addNewTodo(e){
         Status: progressInput.value
     }
     console.log("Versuche Todo hinzuzufügen ...");
-    fetch("http://epicclan.eu:3000/api/todos", { method: 'post', headers: new Headers({'content-type': 'application/json'}), body: JSON.stringify(todo) })
+    fetch("/api/todos", { method: 'post', headers: new Headers({'content-type': 'application/json'}), body: JSON.stringify(todo) })
         .then(response => response.json())
         .then(response => {
             console.log('Server Response: %o', response);
@@ -115,7 +115,7 @@ function editTodo(e){
     currentEdit.Due = dateInput.value + "T" + timeInput.value;
 
     console.log("Versuche Todo zu editieren ...");
-    fetch("http://epicclan.eu:3000/api/todos/" + currentEdit.ID, { method: 'put', headers: new Headers({'content-type': 'application/json'}), body: JSON.stringify(currentEdit) })
+    fetch("/api/todos/" + currentEdit.ID, { method: 'put', headers: new Headers({'content-type': 'application/json'}), body: JSON.stringify(currentEdit) })
         .then(response => response.json())
         .then(response =>{
             console.log('Server Response: %o', response);

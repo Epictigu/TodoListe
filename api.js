@@ -12,14 +12,14 @@ module.exports = {
     init: () => {
         con.connect(function(err){
             if(err) throw err;
-            console.log("Verbind zur MySQL Datenbank wurde aufgebaut!");
+            console.log("Verbindung zur MySQL Datenbank wurde aufgebaut!");
         });
 
         return con;
     },
 
     getTodos: (req, res) => {
-        var sql = "SELECT * FROM Todo";
+        var sql = "SELECT * FROM Todo ORDER BY Due";
         console.log("Frage Todos ab ...");
         con.query(sql, function(err, results){
             if(err) {
